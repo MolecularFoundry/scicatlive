@@ -1,0 +1,18 @@
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+http:
+  routers:
+    proxy:
+      rule: "Host(`mf-scicat-testenv.lbl.gov`)"
+      entryPoints:
+        - websecure
+      service: proxy-scicatlive@docker
+
+tls:
+  certificates:
+    - certFile: "/certs/mf-scicat-testenv_lbl_gov.cer"
+      keyFile: "/certs/mf-scicat-test.key"

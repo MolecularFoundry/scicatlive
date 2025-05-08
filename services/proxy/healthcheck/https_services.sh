@@ -1,5 +1,5 @@
 #!/bin/sh
-
+echo "starting the healthchecks"
 HTTPS_URL_SUFFIX='_HTTPS_URL'
 
 HTTPS_SERVICES=$(env | grep "${HTTPS_URL_SUFFIX}=" | \
@@ -18,5 +18,5 @@ echo "{{ \$services := list $TRAEFIK_HTTPS }}" > /config/traefik.tmp.yaml
 echo "{{ \$https_url_prefix := \"_HTTPS_URL\" }}" >> /config/traefik.tmp.yaml
 cat /config/traefik.pre.yaml >> /config/traefik.tmp.yaml
 mv /config/traefik.tmp.yaml /config/traefik.yaml
-
+echo "finished the healthchecks"
 exit 0

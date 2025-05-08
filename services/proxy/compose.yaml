@@ -6,6 +6,8 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /home/.secrets/mf-scicat-testenv_lbl_gov.pem:/certs/mf-scicat-testenv_lbl_gov.cer
+      - /home/.secrets/mf-scicat-test.key:/certs/mf-scicat-test.key
       - letsencrypt_proxy_data:/letsencrypt
       - ./healthcheck/https_services.sh:/https_services.sh
       - ./config/tls.yaml:/config/traefik.pre.yaml
@@ -16,7 +18,7 @@ services:
     labels:
       - traefik.http.services.proxy.loadbalancer.server.port=8080
     restart: on-failure
-    command: sh -c 'touch /config/traefik.yaml; traefik'
+    command: sh -c 'touch /config/traefik.yaml; traefik' 
     environment:
       - COMPOSE_PROJECT_NAME
     healthcheck:
@@ -29,3 +31,4 @@ services:
 volumes:
   letsencrypt_proxy_data:
     driver: local
+
