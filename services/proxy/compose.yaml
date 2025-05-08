@@ -6,8 +6,8 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/.secrets/mf-scicat-testenv_lbl_gov.pem:/certs/mf-scicat-testenv_lbl_gov.cer
-      - /home/.secrets/mf-scicat-test.key:/certs/mf-scicat-test.key
+      - /path/to/cert.pem:/certs/cert.cer
+      - /path/to/key.key:/certs/key.key
       - letsencrypt_proxy_data:/letsencrypt
       - ./healthcheck/https_services.sh:/https_services.sh
       - ./config/tls.yaml:/config/traefik.pre.yaml
