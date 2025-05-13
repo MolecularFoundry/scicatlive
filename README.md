@@ -1,3 +1,13 @@
+
+# LBL Notes
+
+1. Clone this repo
+2. Modify services/proxy/compose.yaml with the path to your ssl keys
+3. Run docker-compose up -d
+
+
+
+
 # SciCatLive
 
 Get set up with an instance of SciCat to explore the metadata catalog. SciCatlive provides a flexible

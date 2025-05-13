@@ -9,5 +9,6 @@ http:
       rule: Host(`{{ trimPrefix "https://" $url }}`)
       service: {{ $service }}
       entryPoints: websecure
+      tls: {}
   {{- end }}
 {{- end }}
